@@ -1,6 +1,19 @@
 # StudyDos Project
 
 **StudyDos** is a full-stack application designed to help students use AI responsibly, preserving their critical thinking skills while providing valuable hints to achieve academic goals. The frontend is built with **React.js**, and the backend is powered by **Express.js**, while the database is managed using **MongoDB Atlas** with **AWS**. The application also integrates an **AI-powered LLM module** developed with **Python 3.8+** and **pip**, utilizing an **OpenAI API key**. The platform is designed to prevent over-reliance on AI by offering suggestions instead of direct answers, ensuring students remain engaged in the learning process. In the future, StudyDos will integrate with school systems, enabling access to educational materials and further refining the LLM by training it on school databases.
+
+## Figma Prototype
+
+Explore the [StudyDos UI Figma Prototype](https://www.figma.com/proto/SHTmZnace3LfyiFJSJJyuE/StudyDos?page-id=1%3A2&node-id=1-145&viewport=-7147%2C127%2C0.5&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A145&embed-host=share).
+
+> **Note:** GitHub README files do not support iframes. Click the link or the image below to view the prototype in your browser.
+
+[![StudyDos Figma Prototype](Main page.png)](https://www.figma.com/proto/SHTmZnace3LfyiFJSJJyuE/StudyDos?page-id=1%3A2&node-id=1-145&viewport=-7147%2C127%2C0.5&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A145&embed-host=share)
+
+
+
+
+
 ## 📌 Project Structure
 ```
 StudyDos/
