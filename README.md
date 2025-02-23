@@ -8,7 +8,7 @@ Explore the [StudyDos UI Figma Prototype](https://www.figma.com/proto/SHTmZnace3
 
 > **Note:** GitHub README files do not support iframes. Click the link or the image below to view the prototype in your browser.
 
-[![StudyDos Figma Prototype]('Main_page.png')](https://www.figma.com/proto/SHTmZnace3LfyiFJSJJyuE/StudyDos?page-id=1%3A2&node-id=1-145&viewport=-7147%2C127%2C0.5&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A145&embed-host=share)
+[![StudyDos Figma Prototype](Main_page.png)](https://www.figma.com/proto/SHTmZnace3LfyiFJSJJyuE/StudyDos?page-id=1%3A2&node-id=1-145&viewport=-7147%2C127%2C0.5&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A145&embed-host=share)
 
 
 
