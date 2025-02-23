@@ -59,6 +59,7 @@ app.post("/api/messages", async (req, res) => {
             await aiMessageObj.save();
 
             // Send AI's answer back to frontend
+            console.log(aiAnswer)
             res.json({ answer: aiAnswer });
         }
     } catch (err) {

@@ -1,50 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import MicIcon from '../assets/icons/mic-icon.svg'; // Or your preferred method of importing SVGs
 import ImageIcon from '../assets/icons/photo-icon.svg'; // Or your preferred method of importing SVGs
 import SendIcon from '../assets/icons/send-icon.svg';
 
 const ChatInterface = () => {
-  const [messages, setMessages] = useState([
-    {
-      sender: 'you',
-      timestamp: '02:22 AM',
-      content: 'do androids truly dream of electric sheeps or not?',
-    },
-    {
-      sender: 'StudyDos.AI',
-      timestamp: '02:22 AM',
-      content: (
-        <>
-          The question of whether androids dream of electric sheep is the title and central theme of
-          the science fiction novel Do Androids Dream of Electric Sheep? by Philip K. Dick.
-          <ol>
-            <li>
-              The book explores a world where androids are indistinguishable from humans except
-              for a lack of empathy. The story follows Rick Deckard, a bounty hunter who tracks down
-              rogue androids.
-            </li>
-            <li>
-              The title refers to the empathy test used to distinguish between humans and androids.
-              The test involves administering a fictional scenario and evaluating the subject's
-              emotional response. Electric sheep are rare, real animals that people own as status
-              symbols. Owning one is seen as a sign of empathy and a connection to the natural
-              world.
-            </li>
-            <li>
-              The book never definitively answers the question of whether androids dream or not. It
-              explores the nature of reality, consciousness, and what it means to be human.
-            </li>
-            <li>
-              The book inspired the movie Blade Runner, though there are some key differences in
-              plot.
-            </li>
-          </ol>
-        </>
-      ),
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const [inputMessage, setInputMessage] = useState('');
+  const chatContainerRef = useRef(null);
+
+
+  useEffect(() => {
+    // Scroll to bottom on message change
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleInputChange = (e) => {
     setInputMessage(e.target.value);
@@ -52,7 +23,6 @@ const ChatInterface = () => {
 
   const handleSendMessage = () => {
     if (inputMessage.trim() !== '') {
-      // Simulate adding the user's message
       const newMessage = {
         sender: 'you',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -61,34 +31,24 @@ const ChatInterface = () => {
       setMessages([...messages, newMessage]);
       setInputMessage('');
 
-      //Simulate the studyDos message.  Remove this when backend is ready
-      setTimeout(() => {
-        const aiResponse = {
-          sender: 'StudyDos.AI',
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          content: "I am StudyDos!  I don't have any information about that yet.",
-        };
-        setMessages([...messages, newMessage, aiResponse]);
-      }, 1000);
-
-      //  In the future, this is where you'll make the API call to your backend
-      //  to get the response from StudyDos.AI
-      //  Example:
-      //  fetch('/api/chat', {
-      //    method: 'POST',
-      //    headers: { 'Content-Type': 'application/json' },
-      //    body: JSON.stringify({ message: inputMessage })
-      //  })
-      //  .then(res => res.json())
-      //  .then(data => {
-      //    const aiResponse = {
-      //      sender: 'StudyDos.AI',
-      //      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      //      content: data.response // Assuming the backend returns a 'response' field
-      //    };
-      //    setMessages([...messages, newMessage, aiResponse]);
-      //  })
-      //  .catch(err => console.error("Error fetching response:", err));
+      // Make API call to backend
+      fetch('http://localhost:5001/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ author: 'user', message: inputMessage }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const aiResponse = {
+            sender: 'StudyDos.AI',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            content: data.answer, // Access the "answer" field from the response
+          };
+          setMessages((prevMessages) => [...prevMessages, aiResponse]); // Use a functional update for state
+        })
+        .catch((err) => console.error('Error fetching response:', err));
     }
   };
 
@@ -171,12 +131,13 @@ const ChatInterface = () => {
 
   return (
     <div style={containerStyle}>
+
       <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#374151'}}>Ask StudyDos!</h2>
       <p style={{ margin: 0, color: '#555'}}>CS546 A2 – Introduction to Probability and Statistics</p>
       <p style={{ margin: 0, fontWeight: 'bold', color: '#555'}}>Assignment #1 – Descriptive Statistics</p>
 
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={chatContainerStyle}>
+        <div style={chatContainerStyle} ref={chatContainerRef}>
           {messages.map((message, index) => (
             <div
               key={index}
