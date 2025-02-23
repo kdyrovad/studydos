@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from "react";
+import StudyPlanCard from "./StudyPlanCard";
+import StudyPlanCardSecond from './StudyPlanCardSecond';
 
 interface DeadlineItemProps {
   courseCode: string;
@@ -125,7 +127,6 @@ const DailyStudyPlan: React.FC = () => {
   return (
     <div>
       <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#374151', marginBottom: '16px' }}>Daily Study Plan - <span style={{ color: '#3366FF' }}>Feb 11, 2025</span></h2>
-      <p style={{ color: '#4b5563' }}>Coming Soon!</p>
     </div>
   );
 };
@@ -264,7 +265,13 @@ const Home: React.FC = () => {
         </div>
       </div>
 
+      <div style={{ marginTop: "40px" }}>
       <DailyStudyPlan />
+      <div style={{display: "flex", justifyContent: "space-between", marginRight: "25px", marginTop: "15px"}}>
+      <StudyPlanCard />
+      <StudyPlanCardSecond />
+      </div>
+      </div>
   </div>
     // <div style={containerStyle}>
     //   <UpcomingDeadlines deadlines={deadlineData} />
