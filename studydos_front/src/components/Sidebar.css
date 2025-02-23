@@ -1,0 +1,165 @@
+/* Sidebar container */
+.sidebar {
+    width: 320px;
+    height: calc(100vh - 2rem);
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    position: relative;
+  }
+  
+  /* Collapsed state */
+  .sidebar.collapsed {
+    width: 80px;
+    border-radius: 10px;
+  }
+  
+  /* Header section */
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 280px;
+  }
+
+  .sidebar.collapsed .sidebar-header {
+    width: 30px;
+  }
+  
+  .logo-image {
+    width: 120px;
+    height: auto;
+  }
+  
+  /* Toggle button */
+  .toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Menu list */
+  .menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    width: 280px;
+  }
+
+  .sidebar.collapsed .menu-list{
+    width: 48px;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover state: update background, icon, and text colors */
+  .menu-item:hover {
+    background-color: rgba(51, 102, 255, 0.2); /* 20% opacity of #3366FF */
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover .menu-text {
+    color: #3366FF;
+  }
+  
+  /* For inline SVG icons that use currentColor, this will update the icon color */
+  .menu-item:hover .menu-icon {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(93%) saturate(2607%) hue-rotate(198deg) brightness(100%) contrast(101%);
+  }
+  
+  /* Icons and text */
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+  }
+
+  .menu-divider {
+    /* Remove default <hr> styles (if using <hr>) */
+    border: none;
+    margin: 0.5rem 0;
+    /* Custom line */
+    border-top: 1px solid #999;
+    width: 100%;
+  }  
+  
+  /* Adjust collapsed state icon margin for left alignment */
+  .sidebar.collapsed .menu-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .menu-text {
+    font-size: 1rem;
+  }
+  
+  /* Footer / Chat button */
+  .sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  
+  .chat-btn {
+    width: 100%;
+    background-color: #6772e5;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .chat-btn:hover {
+    background-color: #5469d4;
+  }
+  
+  .sidebar-cta {
+    /* Push this section to the bottom using margin-top:auto
+       if the parent has display:flex and flex-direction:column */
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Illustration sizing */
+  .cta-illustration {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  /* CTA Button */
+  .cta-button {
+    width: 100%;
+    background-color: #3366FF;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .cta-button:hover {
+    background-color: #274bba;
+  }
