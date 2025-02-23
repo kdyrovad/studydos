@@ -55,6 +55,11 @@
     flex: 1;
     width: 280px;
   }
+  
+  .menu-list a {
+    margin: 0;
+    color: #000;
+  }
 
   .sidebar.collapsed .menu-list{
     width: 48px;
@@ -67,6 +72,12 @@
     padding: 0.8rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+
+  .menu-item.active {
+    background-color: #E5EAFF;
+    color: #3366FF;
+    border-radius: 25px;
   }
   
   /* Hover state: update background, icon, and text colors */
