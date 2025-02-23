@@ -1,26 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import HomePage from './pages/Home';
+import AiAssistantPage from './pages/AiAssistant';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div className="app-container" style={{ display: "flex" }}>
+    <BrowserRouter>
+      <div style={{ display: 'flex' }}>
         <Sidebar />
-        <div className="main-content" style={{ flexGrow: 1 }}>
-          <Header />
+        <main style={{ flex: 1, padding: '1rem' }}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/ai-assistant" element={<AiAssistantPage />} />
           </Routes>
-        </div>
+        </main>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
 import HomeIcon from '../assets/icons/home-icon.svg';
@@ -23,7 +24,6 @@ const Sidebar: React.FC = () => {
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
         <div className="logo">
-          {/* Show the logo image when not collapsed */}
           {!isCollapsed && (
             <img
               src={LogoImage}
@@ -38,22 +38,45 @@ const Sidebar: React.FC = () => {
       </div>
 
       <ul className="menu-list">
-        <li className="menu-item">
-          <img src={HomeIcon} alt="Home" className="menu-icon" />
-          {!isCollapsed && <span className="menu-text">Home</span>}
+        {/* Home Page NavLink */}
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `menu-item ${isActive ? 'active' : ''}`
+            }
+          >
+            <img src={HomeIcon} alt="Home" className="menu-icon" />
+            {!isCollapsed && <span className="menu-text">Home</span>}
+          </NavLink>
         </li>
+
+        {/* Schedule item remains unchanged or update similarly if needed */}
         <li className="menu-item">
           <img src={ScheduleIcon} alt="Schedule" className="menu-icon" />
           {!isCollapsed && <span className="menu-text">Schedule</span>}
         </li>
+
+        {/* Lessons item remains unchanged or update similarly if needed */}
         <li className="menu-item">
           <img src={LessonsIcon} alt="Lessons" className="menu-icon" />
-          {!isCollapsed && <span className="menu-text">Lessons</span>}
+          {!isCollapsed && <span className="menu-text">Courses</span>}
         </li>
-        <li className="menu-item">
-          <img src={AiIcon} alt="AI Assistant" className="menu-icon" />
-          {!isCollapsed && <span className="menu-text">AI Assistant</span>}
+
+        {/* AI Assistant NavLink */}
+        <li>
+          <NavLink
+            to="/ai-assistant"
+            className={({ isActive }) =>
+              `menu-item ${isActive ? 'active' : ''}`
+            }
+          >
+            <img src={AiIcon} alt="AI Assistant" className="menu-icon" />
+            {!isCollapsed && <span className="menu-text">AI Assistant</span>}
+          </NavLink>
         </li>
+
+        {/* Other items can be updated in a similar way */}
         <li className="menu-item">
           <img src={AnalyticsIcon} alt="Analytics" className="menu-icon" />
           {!isCollapsed && <span className="menu-text">Analytics</span>}
@@ -74,12 +97,13 @@ const Sidebar: React.FC = () => {
       </ul>
 
       <div className="sidebar-cta">
-        {/* Illustration */}
         {!isCollapsed && (
-          <img src={Illustration} alt="StudyDos Illustration" className="cta-illustration" />
+          <img
+            src={Illustration}
+            alt="StudyDos Illustration"
+            className="cta-illustration"
+          />
         )}
-
-        {/* CTA Button */}
         <button className="cta-button">
           {!isCollapsed ? 'Ask StudyDos' : 'Ask'}
         </button>
